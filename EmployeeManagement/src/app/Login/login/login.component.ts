@@ -24,7 +24,7 @@ constructor(private router:Router)
 
 CheckLogin(){
 if(this.Username=="Admin" || this.Password=="123"){
-  this.router.navigateByUrl("Layout");
+  this.router.navigateByUrl("Dashborad");
 }
 else{
 alert("Invalid Credentials.");

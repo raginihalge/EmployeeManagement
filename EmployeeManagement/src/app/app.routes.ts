@@ -3,15 +3,27 @@ import { LoginComponent } from './Login/login/login.component';
 import { LayoutComponent } from './Layout/layout/layout.component';
 import { EmpRegistrationComponent } from './EmployeeRegister/emp-registration/emp-registration.component';
 import { empty } from 'rxjs';
+import { DashboradComponent } from './dashborad/dashborad.component';
 
 export const routes: Routes = [
     {
-        path: 'login',
+        path: '',
         component: LoginComponent
     },
     {
-        path: 'Layout',
-        component: LayoutComponent
+        path: '',
+        component: LayoutComponent,
+        children:[
+            {
+                path:'Employee-register',
+                component: EmpRegistrationComponent
+            },
+            {
+                path: 'Dashborad',
+                component:DashboradComponent
+            }
+            
+        ]
     }
 
 ];
