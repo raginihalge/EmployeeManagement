@@ -20,12 +20,12 @@
         <!-- <div class="or">OR</div> -->
 
         <label for="email">UserName</label>
-        <input type="text" placeholder="Enter UserName" [(ngModel)]="Username" name="Username" required />
+        <input type="text" placeholder="Enter UserName" [(ngModel)]="UserCred.username" name="Username" required />
 
         <label for="password">Password</label>
         <input
           type="password" placeholder="Enter Password"
-          name="Password"  [(ngModel)]="Password"
+          name="Password"  [(ngModel)]="UserCred.password"
                    required />
 
         <button type="submit" (click)="CheckLogin()" class="login-btn">Sign in</button>

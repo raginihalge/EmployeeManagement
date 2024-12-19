@@ -1,1 +1,66 @@
-<p>emp-registration works!</p>
+<div class="col-12 col-lg-9 col-xl-9">
+  <div class="card shadow-2-strong card-registration" style="border-radius: 15px;">
+    <div class="card-body p-4 p-md-5">
+      <h3 class="mb-4 pb-2 pb-md-0 mb-md-5">Registration Form</h3>
+      <form>
+        <div class="row">
+          <div class="col-md-6 mb-4">
+            <div data-mdb-input-init="" class="form-outline" data-mdb-input-initialized="true">
+              <label class="form-label" for="UserName" style="margin-left: 0px;">UserName</label>
+              <input type="text" id="UserName" [(ngModel)]="EmpDetails.UserName" name="UserName"
+                class="form-control form-control-lg">
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6 mb-4">
+
+            <div data-mdb-input-init="" class="form-outline" data-mdb-input-initialized="true">
+              <label class="form-label" for="Password" style="margin-left: 0px;">Password</label>
+              <input type="password" id="Password" [(ngModel)]="EmpDetails.Password" name="Password" required
+                class="form-control form-control-lg">
+            </div>
+
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6 mb-4">
+
+            <div data-mdb-input-init="" class="form-outline" data-mdb-input-initialized="true">
+              <label class="form-label" for="Password" style="margin-left: 0px;">Confirm Password</label>
+              <input type="password" id="ConfirmPassword" [(ngModel)]="EmpDetails.ConfirmPassword"
+                name="ConfirmPassword" required class="form-control form-control-lg">
+            </div>
+
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6 mb-4 d-flex align-items-center">
+
+            <div data-mdb-input-init="" class="form-outline datepicker w-100" data-mdb-input-initialized="true">
+              <label for="MobileNumber" class="form-label" style="margin-left: 0px;">Mobile Number</label>
+              <input type="text" class="form-control form-control-lg" id="MobileNo" [(ngModel)]="EmpDetails.MobileNumber"
+                name="MobileNumber" required>
+            </div>
+
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6 mb-4">
+            <div data-mdb-input-init="" class="form-outline" data-mdb-input-initialized="true">
+              <label class="form-label" for="EmailID" style="margin-left: 0px;">Email</label>
+              <input type="email" id="EmailID" [(ngModel)]="EmpDetails.EmailID"
+                class="form-control form-control-lg" name="EmailID" required>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="mt-4 pt-2">
+          <input data-mdb-ripple-init="" class="btn btn-primary btn-lg" (click)="SaveEmployee()" type="submit" value="Submit">
+        </div>
+
+      </form>
+    </div>
+  </div>
+</div>

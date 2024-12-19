@@ -6,12 +6,18 @@ import { empty } from 'rxjs';
 
 export const routes: Routes = [
     {
-        path: 'login',
+        path: '',
         component: LoginComponent
     },
     {
-        path: 'Layout',
-        component: LayoutComponent
+        path: '',
+        component: LayoutComponent,
+        children:[
+            {
+                path:'Employee-registration',
+                component:EmpRegistrationComponent
+            }
+        ]
     }
 
 ];
