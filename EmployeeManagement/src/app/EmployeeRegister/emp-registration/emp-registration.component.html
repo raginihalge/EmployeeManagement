@@ -2,7 +2,7 @@
   <div class="card shadow-2-strong card-registration" style="border-radius: 15px;">
     <div class="card-body p-4 p-md-5">
       <h3 class="mb-4 pb-2 pb-md-0 mb-md-5">Registration Form</h3>
-      <form>
+      <form #registerform="ngForm">
         <div class="row">
           <div class="col-md-6 mb-4">
             <div data-mdb-input-init="" class="form-outline" data-mdb-input-initialized="true">
@@ -14,35 +14,35 @@
         </div>
         <div class="row">
           <div class="col-md-6 mb-4">
-
             <div data-mdb-input-init="" class="form-outline" data-mdb-input-initialized="true">
               <label class="form-label" for="Password" style="margin-left: 0px;">Password</label>
               <input type="password" id="Password" [(ngModel)]="EmpDetails.Password" name="Password" required
                 class="form-control form-control-lg">
             </div>
-
           </div>
         </div>
         <div class="row">
           <div class="col-md-6 mb-4">
-
             <div data-mdb-input-init="" class="form-outline" data-mdb-input-initialized="true">
               <label class="form-label" for="Password" style="margin-left: 0px;">Confirm Password</label>
-              <input type="password" id="ConfirmPassword" [(ngModel)]="EmpDetails.ConfirmPassword"
+              <input type="password" id="ConfirmPassword" [(ngModel)]="EmpDetails.ConfirmPassword" (keyup)="validatePasswords()"
                 name="ConfirmPassword" required class="form-control form-control-lg">
             </div>
-
           </div>
+        </div>
+        <div *ngIf="passwordMessage" [ngClass]="{'success': passwordsMatch, 'error': !passwordsMatch}">
+          {{ passwordMessage }}
         </div>
         <div class="row">
           <div class="col-md-6 mb-4 d-flex align-items-center">
-
             <div data-mdb-input-init="" class="form-outline datepicker w-100" data-mdb-input-initialized="true">
               <label for="MobileNumber" class="form-label" style="margin-left: 0px;">Mobile Number</label>
-              <input type="text" class="form-control form-control-lg" id="MobileNo" [(ngModel)]="EmpDetails.MobileNumber"
-                name="MobileNumber" required>
+              <input type="text" class="form-control form-control-lg" id="MobileNo" #fMobileNumber="ngModel" [(ngModel)]="EmpDetails.MobileNumber"
+                name="MobileNumber" required maxlength="">
             </div>
-
+          </div>
+          <div>
+            <span *ngIf="fMobileNumber.errors?.['required'] && fMobileNumber.touched" class="error">This Field is required</span>
           </div>
         </div>
         <div class="row">
@@ -50,16 +50,21 @@
             <div data-mdb-input-init="" class="form-outline" data-mdb-input-initialized="true">
               <label class="form-label" for="EmailID" style="margin-left: 0px;">Email</label>
               <input type="email" id="EmailID" [(ngModel)]="EmpDetails.EmailID"
-                class="form-control form-control-lg" name="EmailID" required>
+                class="form-control form-control-lg" name="EmailID" required  email #emailInput="ngModel">
             </div>
           </div>
 
         </div>
-
-        <div class="mt-4 pt-2">
-          <input data-mdb-ripple-init="" class="btn btn-primary btn-lg" (click)="SaveEmployee()" type="submit" value="Submit">
+        <div *ngIf="emailInput.errors?.['required'] && emailInput.touched" class="error">
+          Email is required.
         </div>
-
+        <div *ngIf="emailInput.errors?.['email'] && emailInput.touched" class="error">
+          Please enter a valid email address.
+        </div>
+        <div class="mt-4 pt-2">
+          <!-- <button type="submit"  class="btn btn-primary btn-lg" value="Submit" (click)="SaveEmployee()"></button> -->
+          <input data-mdb-ripple-init=""[disabled]="registerform.invalid"  class="btn btn-primary btn-lg" (click)="SaveEmployee()" type="submit" value="Submit">
+        </div>
       </form>
     </div>
   </div>

@@ -28,7 +28,7 @@ constructor(private router:Router,private http: HttpClient,private apiService:Us
  }
 
 CheckLogin(){
-if(this.UserCred.username=="testuser" || this.UserCred.password=="password"){
+if(this.UserCred.username!="" || this.UserCred.password!=""){
   debugger;
   this.UserCred.username=this.encrypt.encrypt(this.UserCred.username);
   this.UserCred.password=this.encrypt.encrypt(this.UserCred.password);
