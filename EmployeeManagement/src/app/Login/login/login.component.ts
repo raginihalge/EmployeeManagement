@@ -9,7 +9,7 @@ import { EncryptionService } from '../../../service/encryption.service';
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [FormsModule,RouterLink],
+  imports: [FormsModule],
   templateUrl: './login.component.html',
   styleUrl: './login.component.css'
 })
@@ -39,12 +39,12 @@ if(this.UserCred.username!="" || this.UserCred.password!=""){
       console.log('API Response:', response);
       this.responseData = response; // Handle the response here
       localStorage.setItem('authToken', response.token);
+      this.router.navigateByUrl("Dashborad");
     },
     (error) => {
       console.error('API Error:', error); // Handle errors here
     }
   );
-  this.router.navigateByUrl("Employee-registration");
 }
 else{
 alert("Invalid Credentials.");
